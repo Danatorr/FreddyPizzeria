@@ -27,7 +27,7 @@ namespace FreddyPizzeria.Controllers
         {
             var pizza = PizzaService.Get(id);
 
-            if (pizza == null) return NotFound();
+            if (pizza == null) return NotFound($"A pizza with the id: {id} could not be found!");
 
             return pizza;
         }
