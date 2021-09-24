@@ -31,5 +31,26 @@ namespace FreddyPizzeria.Controllers
 
             return pizza;
         }
+
+        [HttpPost]
+        public IActionResult Create(Pizza pizza)
+        {
+            //TODO
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Update(int id, Pizza pizza)
+        {
+            //TODO
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            //TODO
+            return NoContent();
+        }
     }
 }
