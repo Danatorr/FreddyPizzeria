@@ -35,21 +35,33 @@ namespace FreddyPizzeria.Controllers
         [HttpPost]
         public IActionResult Create(Pizza pizza)
         {
-            //TODO
-            return Ok();
+            PizzaService.Add(pizza);
+            return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
         }
 
         [HttpPut]
         public IActionResult Update(int id, Pizza pizza)
         {
-            //TODO
-            return Ok();
+            if (id != pizza.Id) return BadRequest();
+
+            var existingPizza = PizzaService.Get(id);
+
+            if (existingPizza is null) return NotFound();
+
+            PizzaService.Update(pizza);
+
+            return NoContent();
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            //TODO
+            var pizza = PizzaService.Get(id);
+
+            if (pizza is null) return NotFound($"The pizza with id {id} could not be found!");
+
+            PizzaService.Delete(id);
+
             return NoContent();
         }
     }
